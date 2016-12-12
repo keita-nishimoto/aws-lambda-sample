@@ -40,6 +40,5 @@ jspm_packages
 
 .idea/
 aws-lambda-sample.iml
-package.json
 
 saveDynamoDb.zip
