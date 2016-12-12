@@ -27,5 +27,21 @@ $ zip -r saveDynamoDb.zip save-dynamodb.js node_modules
 - save-dynamodb.js
 
 DynamoDBにデータを1件入れるだけのサンプルです。
+以下のコマンドでデプロイ用zipファイルを作成します。
 
+```
+$ zip -r saveDynamoDb.zip save-dynamodb.js node_modules
+```
+
+
+## findDynamoDb
+
+- find-dynamodb.js
+
+DynamoDBからデータを1件取得するだけのサンプルです。
+以下のコマンドでデプロイ用zipファイルを作成します。
+
+```
+zip -r findDynamoDb.zip find-dynamodb.js node_modules
+```
 
