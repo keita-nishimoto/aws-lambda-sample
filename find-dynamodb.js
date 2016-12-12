@@ -6,7 +6,7 @@ exports.handler = function(event, context) {
   const params = {
     TableName: 'users',
     FilterExpression : 'id = :val',
-    ExpressionAttributeValues : {':val': 'c9f8eced-b6a4-4ea6-b203-78e987f2f50d'}
+    ExpressionAttributeValues : {':val': event['userId']}
   };
 
   dynamo.scan(params, function(error, data) {
