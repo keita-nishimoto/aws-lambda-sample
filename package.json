@@ -1,0 +1,23 @@
+{
+  "name": "aws-lambda-sample",
+  "version": "1.0.0",
+  "description": "AwsLambdaを利用した一番基本的なサンプルコード",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://keita-nishimoto@github.com/keita-nishimoto/aws-lambda-sample.git"
+  },
+  "author": "keita-nishimoto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keita-nishimoto/aws-lambda-sample/issues"
+  },
+  "homepage": "https://github.com/keita-nishimoto/aws-lambda-sample#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.7.13",
+    "node-uuid": "^1.4.7"
+  }
+}
