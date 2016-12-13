@@ -1,7 +1,9 @@
+'use strict';
+
 const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-exports.handler = function(event, context) {
+exports.handler = (event, context, callback) => {
 
   const params = {
     TableName: 'users',
@@ -9,13 +11,13 @@ exports.handler = function(event, context) {
     ExpressionAttributeValues : {':val': event['userId']}
   };
 
-  dynamo.scan(params, function(error, data) {
+  dynamo.scan(params, (error, data) => {
     if (error) {
-      context.fail(
-        new Error('Fail. err:' + error)
+      callback(
+        Error('Fail. err:' + error)
       );
     } else {
-      context.done(null, data);
+      callback(null, data);
     }
   });
 };
