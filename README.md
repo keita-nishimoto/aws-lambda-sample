@@ -45,3 +45,8 @@ DynamoDBからデータを1件取得するだけのサンプルです。
 zip -r findDynamoDb.zip find-dynamodb.js node_modules
 ```
 
+## updateDynamoDb
+
+- update-dynamodb.js
+
+DynamoDBのデータを1件更新するだけのサンプルです。
