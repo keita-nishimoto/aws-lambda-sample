@@ -57,3 +57,19 @@ DynamoDBのデータを1件更新するだけのサンプルです。
 
 DynamoDBのデータを1件削除するだけのサンプルです。
 
+## saveAccessToken
+
+- save-access-token.js
+
+カスタム認可の試験に利用するアクセストークン発行用。
+
+事前の以下のテーブル作成が必要です。
+
+- access_tokens
+    - access_token String（プライマリー）
+
+以下のコマンドでデプロイ用zipファイルを作成します。
+
+```
+zip -r saveAccessToken.zip save-access-token.js node_modules
+```
