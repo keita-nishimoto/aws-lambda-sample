@@ -1,8 +1,10 @@
+'use strict';
+
 const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const uuid = require('node-uuid');
 
-exports.handler = function(event, context) {
+exports.handler = (event, context, callback) => {
 
   const params = {
     TableName: 'users',
@@ -12,13 +14,13 @@ exports.handler = function(event, context) {
     }
   };
 
-  dynamo.put(params, function(error) {
+  dynamo.put(params, (error) => {
     if (error) {
-      context.fail(
+      callback(
         new Error('Fail. err:' + error)
       );
     } else {
-      context.done(null, params);
+      callback(null, params);
     }
   });
 };

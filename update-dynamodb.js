@@ -7,17 +7,17 @@ exports.handler = (event, context, callback) => {
 
   const params = {
     TableName: 'users',
-    FilterExpression : 'id = :val',
-    ExpressionAttributeValues : {':val': event['userId']}
+    Item: {
+      id: event['userId'],
+      email: event['email']
+    }
   };
 
-  dynamo.scan(params, (error, data) => {
+  dynamo.put(params, (error) => {
     if (error) {
-      callback(
-        Error('Fail. err:' + error)
-      );
+      callback(new Error('Fail. err:' + error));
     } else {
-      callback(null, data);
+      callback(null, params);
     }
   });
 };
