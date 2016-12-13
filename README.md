@@ -50,3 +50,10 @@ zip -r findDynamoDb.zip find-dynamodb.js node_modules
 - update-dynamodb.js
 
 DynamoDBのデータを1件更新するだけのサンプルです。
+
+## deleteDynamoDb
+
+- delete-dynamodb.js
+
+DynamoDBのデータを1件削除するだけのサンプルです。
+
