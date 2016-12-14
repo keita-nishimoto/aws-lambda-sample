@@ -5,19 +5,63 @@ const dynamo = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = (event, context, callback) => {
 
+  const accessToken = event.authorizationToken;
+
   const params = {
     TableName: 'access_tokens',
     FilterExpression : 'access_token = :val',
-    ExpressionAttributeValues : {':val': '7bfb7815-d948-4343-82b9-964483f5dfbf'}
+    ExpressionAttributeValues : {':val': accessToken}
   };
 
   dynamo.scan(params, (error, data) => {
+
+    if (accessToken === 'unauthorized') {
+      callback(
+        new Error('Unauthorized')
+      )
+    }
+
     if (error) {
       callback(
-        Error('Fail. err:' + error)
+        new Error('Fail. err:' + error)
       );
     } else {
-      callback(null, data);
+      if (data['Items'].length === 0) {
+        callback(
+          null,
+          generatePolicy('user', 'Deny', event.methodArn)
+        );
+      } else {
+        callback(
+          null,
+          generatePolicy('user', 'Allow', event.methodArn)
+        );
+      }
     }
   });
+};
+
+/**
+ * ポリシーを生成する
+ *
+ * @param principalId
+ * @param effect
+ * @param resource
+ * @returns {{}}
+ */
+const generatePolicy = function(principalId, effect, resource) {
+  const authResponse = {};
+  authResponse.principalId = principalId;
+  if (effect && resource) {
+    const policyDocument = {};
+    policyDocument.Version = '2012-10-17'; // default version
+    policyDocument.Statement = [];
+    const statementOne = {};
+    statementOne.Action = 'execute-api:Invoke'; // default action
+    statementOne.Effect = effect;
+    statementOne.Resource = resource;
+    policyDocument.Statement[0] = statementOne;
+    authResponse.policyDocument = policyDocument;
+  }
+  return authResponse;
 };
