@@ -73,3 +73,14 @@ DynamoDBのデータを1件削除するだけのサンプルです。
 ```
 zip -r saveAccessToken.zip save-access-token.js node_modules
 ```
+
+## customAuthorize
+
+- custom-authorize.js
+
+AWS上でカスタム認可を利用する為のサンプルです。
+
+サンプルなので認可ロジックはかなり雑です。
+
+こちらの関数に関しては利用方法のサンプル等を[qiita](http://qiita.com/keita-nishimoto/items/3787b56bcd6bf709c10d) に投稿してあります。
+
