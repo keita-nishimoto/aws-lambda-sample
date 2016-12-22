@@ -84,14 +84,15 @@ AWS上でカスタム認可を利用する為のサンプルです。
 
 こちらの関数に関しては利用方法のサンプル等を[qiita](http://qiita.com/keita-nishimoto/items/3787b56bcd6bf709c10d) に投稿してあります。
 
-## elastiCacheSample
+## fetchQiitaScheme
 
-- elasti-cache-sample.js
+- fetch-qiita-scheme.js
 
-AWS LambdaからelastiCacheSample（Redis）に接続するサンプルです。
+AWS LambdaからQiitaのJSONSchemeにアクセスするサンプルです。
+※VPCの設定を行ったLambdaからのインターネット接続をテストする為に作りました。
 
 以下のコマンドでデプロイ用zipファイルを作成します。
 
 ```
-zip -r elastiCacheSample.zip elasti-cache-sample.js node_modules
+zip -r fetchQiitaScheme.zip fetch-qiita-scheme.js node_modules
 ```
