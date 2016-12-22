@@ -1,5 +1,5 @@
 # aws-lambda-sample
-AwsLambdaを利用した一番基本的なサンプルコード
+AWS Lambdaを利用した一番基本的なサンプルコード
 
 事前の以下のテーブル作成が必要です。
 
@@ -84,3 +84,15 @@ AWS上でカスタム認可を利用する為のサンプルです。
 
 こちらの関数に関しては利用方法のサンプル等を[qiita](http://qiita.com/keita-nishimoto/items/3787b56bcd6bf709c10d) に投稿してあります。
 
+## fetchQiitaScheme
+
+- fetch-qiita-scheme.js
+
+AWS LambdaからQiitaのJSONSchemeにアクセスするサンプルです。
+※VPCの設定を行ったLambdaからのインターネット接続をテストする為に作りました。
+
+以下のコマンドでデプロイ用zipファイルを作成します。
+
+```
+zip -r fetchQiitaScheme.zip fetch-qiita-scheme.js node_modules
+```
